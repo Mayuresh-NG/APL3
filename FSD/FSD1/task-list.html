@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Task List</title>
+</head>
+<body>
+    <header>
+        <h1>Task List</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Add Task</a></li>
+        </ul>
+    </nav>
+    <!-- Inside the <main> tag of task-list.html -->
+    <main>
+        <div id="taskListContainer">
+            <h2>Task List</h2>
+            <button id="addTaskButton">Add Task</button>
+            <ul id="taskList">
+                <!-- Task items will be dynamically added here using JavaScript -->
+            </ul>
+        </div>
+        <div id="addTaskForm" style="display: none;">
+            <h2>Add Task</h2>
+            <form id="taskForm">
+                <label for="taskTitle">Title:</label>
+                <input type="text" id="taskTitle" required>
+                <label for="taskDescription">Description:</label>
+                <textarea id="taskDescription" required></textarea>
+                <button type="submit">Save Task</button>
+                <button type="button" id="cancelTaskButton">Cancel</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Task Manager</p>
+    </footer>
+</body>
+</html>

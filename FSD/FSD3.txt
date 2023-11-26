@@ -1,0 +1,66 @@
+Certainly! Let's create an Angular application with three components and add routes. We'll write the template content directly in the HTML files for simplicity.
+
+1. **Create a new Angular project:**
+
+```bash
+ng new task-manager-app
+cd task-manager-app
+```
+
+2. **Generate three components:**
+
+```bash
+ng generate component home
+ng generate component task-list
+ng generate component task-details
+```
+
+This will create three folders inside the `src/app` directory: `home`, `task-list`, and `task-details`, each with its own HTML file.
+
+3. **Define routes in `app-routing.module.ts`:**
+
+```typescript
+// src/app/app-routing.module.ts
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { TaskDetailsComponent } from './task-details/task-details.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'task-list', component: TaskListComponent },
+  { path: 'task-details/:id', component: TaskDetailsComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+4. **Update the HTML templates directly in the components (`home.component.html`, `task-list.component.html`, `task-details.component.html`):**
+
+```html
+<!-- src/app/home/home.component.html -->
+
+<h1>Welcome to Task Manager</h1>
+```
+
+```html
+<!-- src/app/task-list/task-list.component.html -->
+
+<h1>Task List</h1>
+<a routerLink="/task-details/1">View Task Details</a>
+```
+
+```html
+<!-- src/app/task-details/task-details.component.html -->
+
+<h1>Task Details</h1>
+<p>Task ID: {{ taskId }}</p>
+```
+
+Now, you have a basic Angular application with three components and routes. The templates contain simple content for demonstration purposes. You can further customize the components and templates based on your application requirements.

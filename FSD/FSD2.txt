@@ -1,0 +1,139 @@
+Sure, let's create a simple Angular application with three components and routes. I'll guide you through the process. Make sure you have Angular CLI installed (`npm install -g @angular/cli`).
+
+1. **Create a new Angular project:**
+
+```bash
+ng new task-manager-app
+cd task-manager-app
+```
+
+2. **Generate three components:**
+
+```bash
+ng generate component home
+ng generate component task-list
+ng generate component task-details
+```
+
+This will create three folders inside the `src/app` directory: `home`, `task-list`, and `task-details`, each with its own component files.
+
+3. **Define routes in `app-routing.module.ts`:**
+
+```typescript
+// src/app/app-routing.module.ts
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { TaskDetailsComponent } from './task-details/task-details.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'task-list', component: TaskListComponent },
+  { path: 'task-details/:id', component: TaskDetailsComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+4. **Update `app.module.ts` to include the routing module:**
+
+```typescript
+// src/app/app.module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+5. **Update the template content inside the components (`home.component.html`, `task-list.component.html`, `task-details.component.html`):**
+
+```html
+<!-- src/app/home/home.component.html -->
+
+<h1>Welcome to Task Manager</h1>
+```
+
+```html
+<!-- src/app/task-list/task-list.component.html -->
+
+<h1>Task List</h1>
+<button routerLink="/task-details/1">View Task Details</button>
+```
+
+```html
+<!-- src/app/task-details/task-details.component.html -->
+
+<h1>Task Details</h1>
+<p>Task ID: {{ taskId }}</p>
+```
+
+6. **Update the component classes (`home.component.ts`, `task-list.component.ts`, `task-details.component.ts`):**
+
+```typescript
+// src/app/home/home.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent {}
+```
+
+```typescript
+// src/app/task-list/task-list.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-task-list',
+  templateUrl: './task-list.component.html',
+  styleUrls: ['./task-list.component.css']
+})
+export class TaskListComponent {}
+```
+
+```typescript
+// src/app/task-details/task-details.component.ts
+
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-task-details',
+  templateUrl: './task-details.component.html',
+  styleUrls: ['./task-details.component.css']
+})
+export class TaskDetailsComponent {
+  taskId: string;
+
+  constructor(private route: ActivatedRoute) {
+    this.taskId = this.route.snapshot.paramMap.get('id');
+  }
+}
+```
+
+Now you have a basic Angular application with three components (`HomeComponent`, `TaskListComponent`, and `TaskDetailsComponent`) and routes set up. The `TaskDetailsComponent` retrieves the task ID from the route parameters. The templates contain simple content for demonstration purposes. You can further customize the components and templates based on your application requirements.
