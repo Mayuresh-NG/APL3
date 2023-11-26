@@ -1,0 +1,63 @@
+Title: Arduino Uno Hardware and Basic Sensor Interfacing
+A.Describe the components required for this experiment. Provide a step-by-step explanation of how to connect the LDR and LED to the Arduino Uno. Include a labeled diagram if necessary.
+B.Provide a sample Arduino code snippet for this experiment. Explain the key functions or statements in your code. How does the Arduino read values from the LDR, and how are these values used to control the LED?
+C.Outline the expected behavior of the LED in response to changes in ambient light. How does the resistance of the LDR vary with light intensity, and how does this variation affect the Arduino output?
+
+ANSWER:
+### A. Components and Connection:
+
+#### Components required for the experiment:
+1. Arduino Uno
+2. Light-Dependent Resistor (LDR)
+3. Light-Emitting Diode (LED)
+4. Resistor (for the LED, to limit current)
+5. Breadboard and jumper wires
+
+#### Connection Steps:
+1. Connect one leg of the LDR to the 5V output on the Arduino.
+2. Connect the other leg of the LDR to the A0 analog input pin on the Arduino.
+3. Connect one leg of the resistor to the A0 pin on the Arduino as well.
+4. Connect the other leg of the resistor to the GND (ground) pin on the Arduino.
+5. Connect the positive (anode) leg of the LED to digital pin 13 on the Arduino.
+6. Connect the negative (cathode) leg of the LED through a current-limiting resistor to the GND pin on the Arduino.
+
+Ensure that the connections are secure and that there are no loose wires.
+
+### B. Sample Arduino Code:
+
+Here is a simple Arduino code snippet for this experiment:
+CODE:
+const int ldrPin = A0;  // LDR connected to analog pin A0
+const int ledPin = 13;  // LED connected to digital pin 13
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int ldrValue = analogRead(ldrPin);
+  Serial.println(ldrValue);  // Print LDR values to serial monitor for debugging
+
+  if (ldrValue < 500) {
+    digitalWrite(ledPin, HIGH);  // Turn on the LED in low light conditions
+  } else {
+    digitalWrite(ledPin, LOW);   // Turn off the LED in sufficient light conditions
+  }
+
+  delay(1000);  // Delay for better readability of serial monitor
+}
+
+
+**Explanation:**
+- The code reads the analog value from the LDR using `analogRead()` and prints it to the serial monitor.
+- The LED is turned on when the LDR value is below a threshold (500 in this example).
+- The delay is added to make it easier to observe changes in the serial monitor.
+
+### C. Expected Behavior:
+
+- **LED Response:** The LED will turn on in low light conditions and turn off in sufficient light conditions.
+- **LDR Resistance:** The resistance of the LDR decreases with increasing light intensity.
+- **Arduino Output:** The Arduino reads higher analog values from the LDR in well-lit conditions and lower values in low light conditions.
+
+As ambient light changes, the resistance of the LDR changes, affecting the voltage at the analog pin. This variation is used to control the LED, creating a simple light-sensitive circuit.
