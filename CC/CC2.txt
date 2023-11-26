@@ -1,0 +1,39 @@
+
+Create an instance of virtual machine - call it M1 also create a storage and attach this storage to virtual machine M1.
+
+Creating a virtual machine and attaching storage can be done using various virtualization platforms. I'll provide a general guide using a popular platform, such as VMware or VirtualBox. Please note that the exact steps may vary depending on the platform you are using.
+
+Let's go through the steps for creating a virtual machine and attaching storage using VirtualBox:
+
+1. **Install VirtualBox:**
+   Make sure you have VirtualBox installed on your system. You can download it from the official website: [VirtualBox Downloads](https://www.virtualbox.org/wiki/Downloads).
+
+2. **Open VirtualBox:**
+   Start VirtualBox and make sure it's running.
+
+3. **Create a New Virtual Machine:**
+   - Click on the "New" button in the toolbar.
+   - Enter a name for your virtual machine (e.g., M1).
+   - Choose the type and version of the operating system you plan to install.
+
+4. **Configure Memory (RAM):**
+   - Allocate the amount of RAM you want to assign to the virtual machine.
+
+5. **Create a Virtual Hard Disk:**
+   - In the Virtual Hard Disk section, you can create a new virtual hard disk or use an existing one. Click on "Create a virtual hard disk now" and follow the wizard to set the disk size and type.
+
+6. **Attach Storage to the Virtual Machine:**
+   - With the virtual machine selected, click on "Settings."
+   - In the Settings window, go to the "Storage" tab.
+   - Under the "Controller: IDE" (or SATA), you'll see an empty disk symbol. Click on it.
+   - On the right side, you can choose a disk file. Click on the disk icon and choose "Choose a disk file."
+   - Navigate to the location where you want to create or select a storage file and click "Open."
+
+7. **Install Operating System:**
+   - With the virtual machine selected, click on "Start."
+   - Follow the prompts to install the operating system. If you're using an ISO file, you'll be prompted to select it.
+
+8. **Complete the OS Installation:**
+   - Follow the on-screen instructions to complete the installation of the operating system on the virtual machine.
+
+Now you have created a virtual machine (M1) and attached storage to it using VirtualBox. The exact steps may vary slightly depending on the virtualization platform you are using. If you're using a different platform, please consult its documentation for specific instructions.
